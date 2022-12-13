@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { RxStompService } from '../rx-stomp.service';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
@@ -12,8 +12,10 @@ export class MessagesComponent implements OnInit, OnDestroy {
   receivedMessages: string[] = [];
   // @ts-ignore, to suppress warning related to being undefined
   private topicSubscription: Subscription;
+  @ViewChild('lesbogoss') bogoss: ElementRef | undefined;
+  @ViewChild('message') message: ElementRef | undefined;
 
-  constructor(private rxStompService: RxStompService) {}
+  constructor(private rxStompService: RxStompService ) {}
 
   ngOnInit() {
     this.topicSubscription = this.rxStompService
@@ -28,7 +30,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   onSendMessage() {
-    const message = `Message generated at ${new Date()}`;
+    let message = this.bogoss?.nativeElement.value +": "+ this.message?.nativeElement.value;
     this.rxStompService.publish({ destination: '/topic/demo', body: message });
   }
 }

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import {RxStompService} from "./rx-stomp.service";
 import {rxStompServiceFactory} from "./rx-stomp-service-factory";
 import { MessagesComponent } from './messages/messages.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { MessagesComponent } from './messages/messages.component';
     MessagesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [
     {

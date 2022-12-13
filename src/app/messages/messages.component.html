@@ -1,12 +1,19 @@
+
+<input type="text" value="user1" #lesbogoss/>
 <div id="messages">
   <button class="btn btn-primary" (click)="onSendMessage()">
     Send Test Message
   </button>
+  <input type="text" #message/>
   <h2>Received messages</h2>
   <ol>
     <!-- we will use Angular binding to populate list of messages -->
-    <li class="message" *ngFor="let message of receivedMessages">
-
-    </li>
+    <div class="message" *ngFor="let message of receivedMessages">
+      {{message}}
+    </div>
   </ol>
 </div>
+
+
+
+
