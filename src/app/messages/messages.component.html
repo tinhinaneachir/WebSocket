@@ -9,14 +9,26 @@
 
     </div>
     <div class="chat" *ngFor="let message of receivedMessages">
-      <div *ngIf="message.headers.user === bogoss?.nativeElement.value;then selfmessage else othermessage" class="message my_side_message">
+      <div *ngIf="message.headers['user'] === bogoss?.nativeElement.value;then selfmessage else othermessage" class="message my_side_message">
         rien
       </div>
-      <ng-template class="my_side_message message" #selfmessage>
-        <p>{{message.body}}<br></p>
+      <ng-template #selfmessage>
+        <div class="my_side_message message">
+          <p>
+            {{message.body}}<br>
+            <span>{{message.headers['user']}}</span>
+            <span>{{message.headers['time']}}</span>
+          </p>
+        </div>
       </ng-template>
-      <ng-template class="other_side_message message" #othermessage>
-        <p>{{message.body}}<br></p>
+      <ng-template #othermessage>
+        <div class="other_side_message message" >
+          <p>
+            {{message.body}}<br>
+            <span>{{message.headers['user']}}</span>
+            <span>{{message.headers['time']}}</span>
+          </p>
+        </div>
       </ng-template>
       <!--<div class="other_side_message message ">
         <p>{{message}}<br><span>11h15</span></p>

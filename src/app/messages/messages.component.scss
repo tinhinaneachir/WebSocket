@@ -14,10 +14,12 @@
 }
 .second {
  margin-left: 25%;
-  min-height: 100vh;
+  margin-bottom: 68px;
+  min-height: calc(100vh - 68px);
+  height: 100%;
   position: relative;
   display: flex;
-  height: calc(100vh - 180px);
+  //height: calc(100vh - 180px);
   max-width: 100%;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.06);
   width: 600px;
@@ -59,7 +61,7 @@
   position: relative;
   width: 100%;
   height: calc(100% - 120%);
-  padding: 50px;
+  padding: 5px 50px;
   overflow-y: auto;
 }
 .message  {
@@ -71,6 +73,7 @@
 
 .message p {
   position: relative;
+  overflow-wrap: break-word;
   right: 0;
   text-align: right;
   max-width: 65%;
@@ -92,6 +95,7 @@
 
 .message p span {
   display: block;
+
   margin-top: 5px;
   font-size: 0.85em;
   opacity: 0.5;
@@ -130,8 +134,8 @@
 }
 
 .chatInput {
-  position: absolute;
-  width: 100%;
+  position: fixed;
+  width: 600px;
   bottom: 0;
   background: #FAFBFF;
   padding: 15px;
