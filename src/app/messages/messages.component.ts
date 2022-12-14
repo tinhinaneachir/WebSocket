@@ -6,10 +6,10 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css'],
+  styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  receivedMessages: string[] = [];
+  receivedMessages: Message[] = [];
   // @ts-ignore, to suppress warning related to being undefined
   private topicSubscription: Subscription;
   @ViewChild('lesbogoss') bogoss: ElementRef | undefined;
@@ -21,7 +21,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.topicSubscription = this.rxStompService
       .watch('/topic/demo')
       .subscribe((message: Message) => {
-        this.receivedMessages.push(message.body);
+        this.receivedMessages.push(message);
       });
   }
 
@@ -30,7 +30,8 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   onSendMessage() {
-    let message = this.bogoss?.nativeElement.value +": "+ this.message?.nativeElement.value;
-    this.rxStompService.publish({ destination: '/topic/demo', body: message });
+    let message = this.message?.nativeElement.value;
+    let user = this.bogoss?.nativeElement.value;
+    this.rxStompService.publish({ destination: '/topic/demo', body: message, headers:{user:user} });
   }
 }
