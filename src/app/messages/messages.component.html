@@ -1,5 +1,3 @@
-
-
 <div class="second">
   <div class="leftSide">
     <div class="head">
@@ -9,7 +7,8 @@
 
     </div>
     <div class="chat" *ngFor="let message of receivedMessages">
-      <div *ngIf="message.headers['user'] === bogoss?.nativeElement.value;then selfmessage else othermessage" class="message my_side_message">
+      <div *ngIf="message.headers['user'] === bogoss?.nativeElement.value;then selfmessage else othermessage"
+           class="message my_side_message">
         rien
       </div>
       <ng-template #selfmessage>
@@ -22,7 +21,7 @@
         </div>
       </ng-template>
       <ng-template #othermessage>
-        <div class="other_side_message message" >
+        <div class="other_side_message message">
           <p>
             {{message.body}}<br>
             <span>{{message.headers['user']}}</span>
@@ -30,10 +29,6 @@
           </p>
         </div>
       </ng-template>
-      <!--<div class="other_side_message message ">
-        <p>{{message}}<br><span>11h15</span></p>
-      </div>-->
-
     </div>
     <div class="chatInput">
       <i class="fa fa-plus"></i>
@@ -41,48 +36,10 @@
       <i class="fa fa-send" (click)="onSendMessage()"></i>
     </div>
   </div>
-
-
 </div>
 
-<!--<div class="second">
-  <div class="leftSide">
-    <div class="head">
-      <input type="text" value="user1" #lesbogoss/>
-Chat
-    </div>
-    <div class="chat">
-
-      <div class="message" *ngFor="let message of receivedMessages">
-        {{message}}
-      </div>
-    </div>
-    <div class="chatInput">
-      <input placeholder="Rédigez Texte" type="text" #message/>
-      <button class="btn btn-primary" (click)="onSendMessage()">Send</button>
-    </div>
-  </div>
-
-</div>-->
 
 
-
-<!--<div class="container">
-  <input type="text" value="user1" #lesbogoss/>
-  <div id="message">
-    <input type="text" #message/>
-    <button class="btn btn-primary" (click)="onSendMessage()">
-      Send Test Message
-    </button>
-    <h2>Received messages</h2>
-    <ol class = "container">
-      we will use Angular binding to populate list of messages
-      <div class="message" *ngFor="let message of receivedMessages">
-        {{message}}
-      </div>
-    </ol>
-  </div>
-</div>-->
 
 
 
