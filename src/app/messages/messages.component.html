@@ -32,7 +32,7 @@
     </div>
     <div class="chatInput">
       <i class="fa fa-plus"></i>
-      <input placeholder="Rédigez Texte" type="text" #message/>
+      <input placeholder="Rédigez Texte" (keydown.enter) = "onSendMessage()" [(ngModel)] ="resetInput" type="text" #message/>
       <i class="fa fa-send" (click)="onSendMessage()"></i>
     </div>
   </div>

@@ -5,16 +5,18 @@ import {RxStompService} from "./rx-stomp.service";
 import {rxStompServiceFactory} from "./rx-stomp-service-factory";
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [
     {
       provide: RxStompService,

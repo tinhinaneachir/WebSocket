@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MessagesComponent implements OnInit, OnDestroy {
   receivedMessages: Message[] = [];
+  resetInput: string = '';
   // @ts-ignore, to suppress warning related to being undefined
   private topicSubscription: Subscription;
   @ViewChild('lesbogoss') bogoss: ElementRef | undefined;
@@ -30,6 +31,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   onSendMessage() {
+    this.resetInput = '' ;
     let message = this.message?.nativeElement.value;
     let user = this.bogoss?.nativeElement.value;
     let date = new Date();
