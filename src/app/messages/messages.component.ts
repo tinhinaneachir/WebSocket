@@ -2,6 +2,7 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import { RxStompService } from '../rx-stomp.service';
 import { Message } from '@stomp/stompjs';
 import { Subscription } from 'rxjs';
+import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
   selector: 'app-messages',
@@ -9,6 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit, OnDestroy {
+  currentDate : Date = new Date();
   receivedMessages: Message[] = [];
   resetInput: string = '';
   // @ts-ignore, to suppress warning related to being undefined
@@ -44,7 +46,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
           date.getHours().toString().padStart(2, '0'),
           date.getMinutes().toString().padStart(2, '0'),
           date.getSeconds().toString().padStart(2, '0'),
-        ].join(':')
+        ].join(':'),
       }
     });
   }

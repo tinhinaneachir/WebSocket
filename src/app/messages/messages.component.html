@@ -17,6 +17,8 @@
             {{message.body}}<br>
             <span>{{message.headers['user']}}</span>
             <span>{{message.headers['time']}}</span>
+            {{currentDate | date}}
+
           </p>
         </div>
       </ng-template>
@@ -26,6 +28,7 @@
             {{message.body}}<br>
             <span>{{message.headers['user']}}</span>
             <span>{{message.headers['time']}}</span>
+           {{currentDate | date }}
           </p>
         </div>
       </ng-template>
